@@ -21,16 +21,33 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <style>
+      #app {
+        background-color: lightgrey;
+        display: flex;
+        justify-content: center;
+      }
       .app_bar {
         font-weight: bold;
       }
       .app_bar > .app_bar_title {
-        text-shadow: 5px 5px 5px gray;
+        /* text-shadow: 5px 5px 5px gray; */
       }
       .palette {
         border-radius: 7px;
         border: 5px solid #fffc99;
         font-weight: bold;
+        width: 600px;
+      }
+      .color_box {
+        margin: 100px 10px 40px 10px;
+      }
+      .color_button {
+        border-radius: 50%;
+        padding: 40px;
+      }
+      .color_button:hover {
+        opacity: 0.5;
+        color: white;
       }
     </style>
     <title>Palette</title>
@@ -43,39 +60,57 @@
             >Palette</v-toolbar-title
           >
         </v-app-bar>
-        <v-responsive class="palette overflow-y-auto my-auto" max-height="600">
-          <div class="pa-6 text-center">Scroll down</div>
 
-          <v-responsive height="200vh" class="text-center pa-2">
-            <v-responsive min-height="50vh"></v-responsive>
-            <div class="text-center text-body-2 mb-12">
-              The card will appear below:
-            </div>
+        <v-container>
+          <v-row class="justify-center">
+            <v-col
+              cols="1"
+              class="color_box"
+              v-for="color in chooseColor"
+              :key="color"
+              ><button
+                class="color_button"
+                :style="{backgroundColor: color}"
+              ></button
+            ></v-col>
+          </v-row>
+        </v-container>
 
-            <v-lazy
-              v-model="isActive"
-              :options="{
+        <v-container class="palette">
+          <v-responsive class="overflow-y-auto my-auto" max-height="500">
+            <div class="pa-6 text-center">Scroll down</div>
+
+            <v-responsive height="200vh" class="text-center pa-2">
+              <v-responsive min-height="50vh"></v-responsive>
+              <div class="text-center text-body-2 mb-12">
+                The card will appear below:
+              </div>
+
+              <v-lazy
+                v-model="isActive"
+                :options="{
           threshold: .5
         }"
-              min-height="200"
-              transition="fade-transition"
-            >
-              <v-card class="mx-auto" max-width="336">
-                <v-card-title>Card title</v-card-title>
+                min-height="200"
+                transition="fade-transition"
+              >
+                <v-card class="mx-auto" max-width="336">
+                  <v-card-title>Card title</v-card-title>
 
-                <v-card-text>
-                  Phasellus magna. Quisque rutrum. Nunc egestas, augue at
-                  pellentesque laoreet, felis eros vehicula leo, at malesuada
-                  velit leo quis pede. Aliquam lobortis. Quisque libero metus,
-                  condimentum nec, tempor a, commodo mollis, magna. In turpis.
-                  In dui magna, posuere eget, vestibulum et, tempor auctor,
-                  justo. In turpis. Pellentesque dapibus hendrerit tortor. Ut
-                  varius tincidunt libero.
-                </v-card-text>
-              </v-card>
-            </v-lazy>
+                  <v-card-text>
+                    Phasellus magna. Quisque rutrum. Nunc egestas, augue at
+                    pellentesque laoreet, felis eros vehicula leo, at malesuada
+                    velit leo quis pede. Aliquam lobortis. Quisque libero metus,
+                    condimentum nec, tempor a, commodo mollis, magna. In turpis.
+                    In dui magna, posuere eget, vestibulum et, tempor auctor,
+                    justo. In turpis. Pellentesque dapibus hendrerit tortor. Ut
+                    varius tincidunt libero.
+                  </v-card-text>
+                </v-card>
+              </v-lazy>
+            </v-responsive>
           </v-responsive>
-        </v-responsive>
+        </v-container>
       </v-app>
     </div>
     <script>
@@ -84,6 +119,17 @@
         vuetify: new Vuetify(),
         data: {
           isActive: false,
+          chooseColor: [
+            "white",
+            "black",
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "navy",
+            "purple",
+          ],
         },
       });
     </script>
