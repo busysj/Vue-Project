@@ -29,9 +29,6 @@
       .app_bar {
         font-weight: bold;
       }
-      .app_bar > .app_bar_title {
-        /* text-shadow: 5px 5px 5px gray; */
-      }
       .palette {
         border-radius: 7px;
         border: 5px solid #fffc99;
@@ -44,10 +41,13 @@
       .color_button {
         border-radius: 50%;
         padding: 40px;
+        transform: translate(0, 0);
+        transition: transform 0.2s;
       }
       .color_button:hover {
-        opacity: 0.5;
+        opacity: 0.6;
         color: white;
+        transform: translate(0, -20px);
       }
     </style>
     <title>Palette</title>
@@ -57,7 +57,10 @@
       <v-app>
         <v-app-bar src="" app color="#fffcb3" class="app_bar">
           <v-toolbar-title class="app_bar_title black--text mx-auto"
-            >Palette</v-toolbar-title
+            >Palette
+            <v-icon class="black--text"
+              >mdi-palette-outline</v-icon
+            ></v-toolbar-title
           >
         </v-app-bar>
 
@@ -81,33 +84,17 @@
             <div class="pa-6 text-center">Scroll down</div>
 
             <v-responsive height="200vh" class="text-center pa-2">
-              <v-responsive min-height="50vh"></v-responsive>
               <div class="text-center text-body-2 mb-12">
                 The card will appear below:
               </div>
 
-              <v-lazy
-                v-model="isActive"
-                :options="{
-          threshold: .5
-        }"
-                min-height="200"
-                transition="fade-transition"
-              >
-                <v-card class="mx-auto" max-width="336">
-                  <v-card-title>Card title</v-card-title>
-
-                  <v-card-text>
-                    Phasellus magna. Quisque rutrum. Nunc egestas, augue at
-                    pellentesque laoreet, felis eros vehicula leo, at malesuada
-                    velit leo quis pede. Aliquam lobortis. Quisque libero metus,
-                    condimentum nec, tempor a, commodo mollis, magna. In turpis.
-                    In dui magna, posuere eget, vestibulum et, tempor auctor,
-                    justo. In turpis. Pellentesque dapibus hendrerit tortor. Ut
-                    varius tincidunt libero.
-                  </v-card-text>
-                </v-card>
-              </v-lazy>
+              <v-row justify="space-around">
+                <v-color-picker
+                  class="ma-2"
+                  show-swatches
+                  swatches-max-height="300px"
+                ></v-color-picker>
+              </v-row>
             </v-responsive>
           </v-responsive>
         </v-container>
