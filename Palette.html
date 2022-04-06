@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <style>
       #app {
-        background-color: lightgrey;
+        background-color: #ffad60;
         display: flex;
         justify-content: center;
       }
@@ -30,17 +30,17 @@
         font-weight: bold;
       }
       .palette {
-        border-radius: 7px;
-        border: 5px solid #fffc99;
+        border-radius: 20px;
+        border: 2px solid lightgrey;
         font-weight: bold;
-        width: 600px;
+        width: 500px;
       }
       .color_box {
-        margin: 100px 10px 40px 10px;
+        margin: 20px 1px 1px 1px;
       }
       .color_button {
         border-radius: 50%;
-        padding: 40px;
+        padding: 45px;
         transform: translate(0, 0);
         transition: transform 0.2s;
       }
@@ -49,13 +49,21 @@
         color: white;
         transform: translate(0, -20px);
       }
+      .input_text {
+        padding: 0.7rem;
+        font-size: 2rem;
+        border-radius: 7px;
+        background: #ffffff;
+        margin-top: 50px;
+        text-align: center;
+      }
     </style>
     <title>Palette</title>
   </head>
   <body>
     <div id="app">
       <v-app>
-        <v-app-bar src="" app color="#fffcb3" class="app_bar">
+        <v-app-bar src="" app color="#ffeead" class="app_bar">
           <v-toolbar-title class="app_bar_title black--text mx-auto"
             >Palette
             <v-icon class="black--text"
@@ -64,40 +72,54 @@
           >
         </v-app-bar>
 
-        <v-container>
-          <v-row class="justify-center">
-            <v-col
-              cols="1"
-              class="color_box"
-              v-for="color in chooseColor"
-              :key="color"
-              ><button
-                class="color_button"
-                :style="{backgroundColor: color}"
-              ></button
-            ></v-col>
-          </v-row>
-        </v-container>
+        <v-main>
+          <v-container>
+            <v-row class="justify-center">
+              <v-col
+                cols="2"
+                class="color_box"
+                v-for="color in chooseColor"
+                :key="color"
+                ><button
+                  class="color_button"
+                  :style="{backgroundColor: color}"
+                ></button
+              ></v-col>
+            </v-row>
+          </v-container>
 
-        <v-container class="palette">
-          <v-responsive class="overflow-y-auto my-auto" max-height="500">
-            <div class="pa-6 text-center">Scroll down</div>
+          <v-container class="palette">
+            <v-responsive class="overflow-y-auto my-auto" max-height="420">
+              <div class="pa-6 text-center">Scroll down</div>
 
-            <v-responsive height="200vh" class="text-center pa-2">
-              <div class="text-center text-body-2 mb-12">
-                The card will appear below:
-              </div>
-
-              <v-row justify="space-around">
-                <v-color-picker
-                  class="ma-2"
-                  show-swatches
-                  swatches-max-height="300px"
-                ></v-color-picker>
-              </v-row>
+              <v-responsive height="200vh" class="text-center pa-2">
+              </v-responsive>
             </v-responsive>
-          </v-responsive>
-        </v-container>
+          </v-container>
+
+          <v-container>
+            <v-row class="justify-center">
+              <input
+                type="text"
+                placeholder=" Check text color here!"
+                class="input_text"
+                style="color: blue"
+              />
+              <!-- <v-col cols="9">
+              <v-card class="pa-10" color="grey">
+                <v-text-field
+                  rounded
+                  dense
+                  clearable
+                  placeholder="Check color here!"
+                  style="font-size: 2em; font-weight: bold"
+                >
+                </v-text-field>
+              </v-card>
+            </v-col> -->
+            </v-row>
+          </v-container>
+        </v-main>
       </v-app>
     </div>
     <script>
