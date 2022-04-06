@@ -57,6 +57,12 @@
         margin-top: 50px;
         text-align: center;
       }
+      .red_buttons {
+        width: 100px;
+        height: 100px;
+
+        border-radius: 12px;
+      }
     </style>
     <title>Palette</title>
   </head>
@@ -92,7 +98,15 @@
             <v-responsive class="overflow-y-auto my-auto" max-height="420">
               <div class="pa-6 text-center">Scroll down</div>
 
-              <v-responsive height="200vh" class="text-center pa-2">
+              <v-row class="ma-6">
+                <v-col v-for="r in reds" :key="r">
+                  <button class="red_buttons" :style="{backgroundColor: r}">
+                    {{r}}
+                  </button>
+                </v-col>
+              </v-row>
+
+              <v-responsive height="0vh" class="text-center pa-2">
               </v-responsive>
             </v-responsive>
           </v-container>
@@ -138,6 +152,174 @@
             "blue",
             "navy",
             "purple",
+          ],
+          whites: [
+            "#ffffff",
+            "#f2f2f2",
+            "#e5e5e5",
+            "#d8d8d8",
+            "#cccccc",
+            "#b2b2b2",
+            "#999999",
+            "#7f7f7f",
+            "#666666",
+            "#4c4c4c",
+            "#333333",
+            "#191919",
+          ],
+          blacks: [
+            "#000000",
+            "#0c0c0c",
+            "#191919",
+            "#262626",
+            "#323232",
+            "#4c4c4c",
+            "#666666",
+            "#7f7f7f",
+            "#999999",
+            "#b2b2b2",
+            "#cccccc",
+            "#e5e5e5",
+          ],
+          reds: [
+            "#330000",
+            "#4c0000",
+            "#660000",
+            "#7f0000",
+            "#990000",
+            "#b20000",
+            "#cc0000",
+            "#e50000",
+            "#ff0000",
+            "#ff1919",
+            "#ff3232",
+            "#ff4c4c",
+            "#ff6666",
+            "#ff7f7f",
+            "#ff9999",
+            "#ffb2b2",
+            "#ffcccc",
+            "#ffe5e5",
+          ],
+          oranges: [
+            "#332100",
+            "#4c3100",
+            "#664200",
+            "#7f5200",
+            "#996300",
+            "#b27300",
+            "#cc8400",
+            "#e59400",
+            "#ffa500",
+            "#ffae19",
+            "#ffb732",
+            "#ffc04c",
+            "#ffc966",
+            "#ffd27f",
+            "#ffdb99",
+            "#ffe4b2",
+            "#ffedcc",
+            "#fff6e5",
+          ],
+          yellows: [
+            "#333300",
+            "#4c4c00",
+            "#666600",
+            "#7f7f00",
+            "#999900",
+            "#b2b200",
+            "#cccc00",
+            "#e5e500",
+            "#ffff00",
+            "#ffff19",
+            "#ffff32",
+            "#ffff4c",
+            "#ffff66",
+            "#ffff7f",
+            "#ffff99",
+            "#ffffb2",
+            "#ffffcc",
+            "#ffffe5",
+          ],
+          greens: [
+            "#003300",
+            "#004c00",
+            "#006600",
+            "#007f00",
+            "#009900",
+            "#00b200",
+            "#00cc00",
+            "#00e500",
+            "#00ff00",
+            "#19ff19",
+            "#32ff32",
+            "#4cff4c",
+            "#66ff66",
+            "#7fff7f",
+            "#99ff99",
+            "#b2ffb2",
+            "#ccffcc",
+            "#e5ffe5",
+          ],
+          blues: [
+            "#000033",
+            "#00004c",
+            "#000066",
+            "#00007f",
+            "#000099",
+            "#0000b2",
+            "#0000cc",
+            "#0000e5",
+            "#0000ff",
+            "#1919ff",
+            "#3232ff",
+            "#4c4cff",
+            "#6666ff",
+            "#7f7fff",
+            "#9999ff",
+            "#b2b2ff",
+            "#ccccff",
+            "#e5e5ff",
+          ],
+          navys: [
+            "#000019",
+            "#000026",
+            "#000033",
+            "#000040",
+            "#00004c",
+            "#000059",
+            "#000066",
+            "#000073",
+            "#000080",
+            "#19198c",
+            "#323299",
+            "#4c4ca6",
+            "#6666b2",
+            "#7f7fbf",
+            "#9999cc",
+            "#b2b2d8",
+            "#cccce5",
+            "#e5e5f2",
+          ],
+          purples: [
+            "#200630",
+            "#300948",
+            "#400c60",
+            "#501078",
+            "#601390",
+            "#7016a8",
+            "#8019c0",
+            "#901cd8",
+            "#a020f0",
+            "#a936f1",
+            "#b34cf3",
+            "#bc62f4",
+            "#c679f6",
+            "#cf8ff7",
+            "#d9a5f9",
+            "#e2bcfa",
+            "#ecd2fc",
+            "#f5e8fd",
           ],
         },
       });
