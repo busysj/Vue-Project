@@ -22,7 +22,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <style>
       #app {
-        background-color: #ffad60;
         display: flex;
         justify-content: center;
       }
@@ -56,19 +55,25 @@
         background: #ffffff;
         margin-top: 50px;
         text-align: center;
+        font-weight: bold;
       }
       .red_buttons {
         width: 100px;
         height: 100px;
-
         border-radius: 12px;
+        color: transparent;
+      }
+
+      .red_buttons:hover {
+        opacity: 0.7;
+        color: white;
       }
     </style>
     <title>Palette</title>
   </head>
   <body>
-    <div id="app">
-      <v-app>
+    <div id="app" :style="{backgroundColor : color}">
+      <v-app :style="{backgroundColor: color}">
         <v-app-bar src="" app color="#ffeead" class="app_bar">
           <v-toolbar-title class="app_bar_title black--text mx-auto"
             >Palette
@@ -84,7 +89,7 @@
               <v-col
                 cols="2"
                 class="color_box"
-                v-for="color in chooseColor"
+                v-for="color in chooseColors"
                 :key="color"
                 ><button
                   class="color_button"
@@ -99,9 +104,13 @@
               <div class="pa-6 text-center">Scroll down</div>
 
               <v-row class="ma-6">
-                <v-col v-for="r in reds" :key="r">
-                  <button class="red_buttons" :style="{backgroundColor: r}">
-                    {{r}}
+                <v-col v-for="r,i in reds" ref="click_btn" :key="i">
+                  <button
+                    @click="ChooseColor(i)"
+                    class="red_buttons"
+                    :style="{backgroundColor: r}"
+                  >
+                    <div id="color_code">{{r}}</div>
                   </button>
                 </v-col>
               </v-row>
@@ -117,7 +126,7 @@
                 type="text"
                 placeholder=" Check text color here!"
                 class="input_text"
-                style="color: blue"
+                :style="{color: color}"
               />
               <!-- <v-col cols="9">
               <v-card class="pa-10" color="grey">
@@ -141,8 +150,8 @@
         el: "#app",
         vuetify: new Vuetify(),
         data: {
-          isActive: false,
-          chooseColor: [
+          color: "#ffad60",
+          chooseColors: [
             "white",
             "black",
             "red",
@@ -321,6 +330,11 @@
             "#ecd2fc",
             "#f5e8fd",
           ],
+        },
+        methods: {
+          ChooseColor(n) {
+            this.color = this.$refs.click_btn[n].innerText;
+          },
         },
       });
     </script>
