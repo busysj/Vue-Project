@@ -57,14 +57,14 @@
         text-align: center;
         font-weight: bold;
       }
-      .red_buttons {
+      .color_button2 {
         width: 100px;
         height: 100px;
         border-radius: 12px;
         color: transparent;
       }
 
-      .red_buttons:hover {
+      .color_button2:hover {
         opacity: 0.7;
         color: white;
       }
@@ -89,11 +89,14 @@
               <v-col
                 cols="2"
                 class="color_box"
-                v-for="color in chooseColors"
-                :key="color"
+                v-for="circleColor,j in chooseColors"
+                :key="j"
+                ref="choose_btn"
+                :id="circleColor"
                 ><button
+                  @click="ChooseColor(j)"
                   class="color_button"
-                  :style="{backgroundColor: color}"
+                  :style="{backgroundColor: circleColor}"
                 ></button
               ></v-col>
             </v-row>
@@ -104,13 +107,130 @@
               <div class="pa-6 text-center">Scroll down</div>
 
               <v-row class="ma-6">
-                <v-col v-for="r,i in reds" ref="click_btn" :key="i">
+                <v-col
+                  v-if="pickColor === 'whites'"
+                  v-for="c,i in whites"
+                  ref="click_btn"
+                  :key="i"
+                >
                   <button
-                    @click="ChooseColor(i)"
-                    class="red_buttons"
-                    :style="{backgroundColor: r}"
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
                   >
-                    <div id="color_code">{{r}}</div>
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'blacks'"
+                  v-for="c,i in blacks"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'reds'"
+                  v-for="c,i in reds"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'oranges'"
+                  v-for="c,i in oranges"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'yellows'"
+                  v-for="c,i in yellows"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'greens'"
+                  v-for="c,i in greens"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'blues'"
+                  v-for="c,i in blues"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'navys'"
+                  v-for="c,i in navys"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
+                  </button>
+                </v-col>
+                <v-col
+                  v-if="pickColor === 'purples'"
+                  v-for="c,i in purples"
+                  ref="click_btn"
+                  :key="i"
+                >
+                  <button
+                    @click="SelectColor(i)"
+                    class="color_button2"
+                    :style="{backgroundColor: c}"
+                  >
+                    <div id="color_code">{{c}}</div>
                   </button>
                 </v-col>
               </v-row>
@@ -151,6 +271,7 @@
         vuetify: new Vuetify(),
         data: {
           color: "#ffad60",
+          pickColor: "",
           chooseColors: [
             "white",
             "black",
@@ -333,7 +454,15 @@
         },
         methods: {
           ChooseColor(n) {
+            this.pickColor = this.$refs.choose_btn[n].id + "s";
+          },
+          SelectColor(n) {
             this.color = this.$refs.click_btn[n].innerText;
+            // this.$copyText(this.$refs.click_btn[n].innerText);
+
+            // var copyText = document.getElementById("color_code");
+            // copyText.select();
+            // document.execCommand("Copy");
           },
         },
       });
