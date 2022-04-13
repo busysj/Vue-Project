@@ -20,6 +20,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-clipboard2@0.3.1/dist/vue-clipboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-clipboard2@0.3.1/dist/vue-clipboard.min.js"></script>
     <style>
       #app {
         display: flex;
@@ -104,7 +106,18 @@
 
           <v-container class="palette">
             <v-responsive class="overflow-y-auto my-auto" max-height="420">
-              <div class="pa-6 text-center">Scroll down</div>
+              <div class="pa-5 text-center">
+                Scroll Down<v-icon class="red--text"
+                  >mdi-arrow-down-thick</v-icon
+                ><v-icon class="red--text">mdi-arrow-down-thick</v-icon
+                ><v-icon class="red--text">mdi-arrow-down-thick</v-icon>
+              </div>
+              <div style="font-weight: 900" class="text-center">
+                <v-icon class="green--text">mdi-check-bold</v-icon> Auto Copy On
+                Click
+                <v-icon dark>mdi-cursor-default-outline</v-icon>
+                <v-icon class="black--text">mdi-content-copy</v-icon>
+              </div>
 
               <v-row class="ma-6">
                 <v-col
@@ -230,7 +243,7 @@
                     class="color_button2"
                     :style="{backgroundColor: c}"
                   >
-                    <div id="color_code">{{c}}</div>
+                    <div id="color_code" :value="color">{{c}}</div>
                   </button>
                 </v-col>
               </v-row>
@@ -458,12 +471,11 @@
           },
           SelectColor(n) {
             this.color = this.$refs.click_btn[n].innerText;
-            // this.$copyText(this.$refs.click_btn[n].innerText);
-
-            // var copyText = document.getElementById("color_code");
-            // copyText.select();
-            // document.execCommand("Copy");
+            this.$copyText(this.color);
           },
+          // doCopy() {
+          //   this.$copyText(this.color);
+          // },
         },
       });
     </script>
