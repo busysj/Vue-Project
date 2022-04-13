@@ -11,9 +11,9 @@
  
  ## 막힌 부분과 해결 방안
  색상을 골라 클릭하였을 때 클립보드에 저장될 수 있게 하는 부분이 막혔으나
- ₩₩₩
+```
  <script src="https://cdn.jsdelivr.net/npm/vue-clipboard2@0.3.1/dist/vue-clipboard.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/vue-clipboard2@0.3.1/dist/vue-clipboard.min.js"></script>
- ₩₩₩
+```
  
   cdn을 이용하여 $copyText의 not function (typeError)를 해결할 수 있었다.
